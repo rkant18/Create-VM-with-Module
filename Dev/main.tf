@@ -22,14 +22,14 @@ module "source_interface" {
   vm_interface = var.vm_interface
 }
 ####### To Create New Linux Virtual Machine ############
-# module "source_vm" {
-#   depends_on = [ var.vm_interface ]
-#   source       = "github.com/rkant18/testcode.git/module/VM"
-#   vm_resources = var.vm_resources
-# }
-# ####### To Create Public IP for access secured VM #######
-# module "source_pip" {
-#   source       = "github.com/rkant18/testcode.git/module/Bastion"
-#   azurerm_public_ip = var.azurerm_public_ip
-#   bastion_host = var.bastion_host
-# }
+module "source_vm" {
+  depends_on = [ var.vm_interface ]
+  source       = "github.com/rkant18/testcode.git/module/VM"
+  vm_resources = var.vm_resources
+}
+####### To Create Public IP for access secured VM #######
+module "source_pip" {
+  source       = "github.com/rkant18/testcode.git/module/Bastion"
+  azurerm_public_ip = var.azurerm_public_ip
+  bastion_host = var.bastion_host
+}
