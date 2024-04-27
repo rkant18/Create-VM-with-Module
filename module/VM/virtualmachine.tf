@@ -7,10 +7,7 @@ resource "azurerm_linux_virtual_machine" "lnx-vm" {
   admin_username        = data.azurerm_key_vault_secret.username.value
   admin_password        = data.azurerm_key_vault_secret.password.value
   network_interface_ids = [data.azurerm_network_interface.vm-net[each.key].id, ]
-  # admin_ssh_key {
-  #   username   = each.value.admin_username
-  #   public_key = file("~/.ssh/id_rsa.pub")
-  # }
+
   os_disk {
     name                 = each.value.os_name
     caching              = each.value.os_caching
