@@ -1,6 +1,6 @@
 resource "azurerm_network_interface" "vm-net" {
   for_each            = var.vm_interface
-  name                = each.value.name
+  name                = each.key
   resource_group_name = each.value.resource_group_name
   location            = each.value.location
 
